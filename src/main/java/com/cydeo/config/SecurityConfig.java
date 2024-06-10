@@ -55,10 +55,14 @@ public class SecurityConfig {
                 ).permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic()
+//                .httpBasic()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/welcome")
+                .failureUrl("/login?error=true")
+                .permitAll()
                 .and().build();
-
-
     }
+
 
 }
