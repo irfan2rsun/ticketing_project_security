@@ -31,7 +31,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.user.getPassWord();
+        return this.user.getPassWord();  // how I can access to password field of the user object
     }
 
     @Override

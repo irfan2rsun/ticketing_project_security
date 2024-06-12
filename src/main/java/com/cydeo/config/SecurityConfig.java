@@ -40,10 +40,11 @@ public class SecurityConfig {
 
         return http
                 .authorizeRequests()
-                .antMatchers("/user/**").hasRole("ADMIN")
-                .antMatchers("/project/**").hasRole("MANAGER")
-                .antMatchers("/task/employee/**").hasRole("EMPLOYEE")
-                .antMatchers("/task/**").hasRole("MANAGER")
+//                .antMatchers("/user/**").hasRole("ADMIN")
+                .antMatchers("/user/**").hasAnyAuthority("Admin") // when we only have this line it means everybody can access to the information below
+                .antMatchers("/project/**").hasAnyAuthority("Manager")
+                .antMatchers("/task/employee/**").hasAnyAuthority("Employee")
+                .antMatchers("/task/**").hasAnyAuthority("Manager")
 //                .antMatchers("/task/**").hasAnyRole("EMPLOYEE","ADMIN")
 //                .antMatchers("/task/**").hasAnyAuthority("ROLE_EMPLOYEE")
                 .antMatchers(
