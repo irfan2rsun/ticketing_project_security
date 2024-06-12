@@ -68,6 +68,11 @@ public class SecurityConfig {
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                     .logoutSuccessUrl("/login")
                 .and()
+                .rememberMe()
+                    .tokenValiditySeconds(120)
+                    .key("cydeo")
+                    .userDetailsService(securityService)
+                .and()
                 .build();
     }
 
